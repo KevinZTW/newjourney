@@ -8,5 +8,25 @@
 </head>
 <body>
     <h1>It's  <%= kindDay %></h1>
+<% if (kindDay ==="Sunday") { %>
+<h1 style ="color:purple"><%= kindDay%> TODOlist</h1>
+<% } %>
+
+
+
+<ul>
+    
+<% for (var count =0; count<var1 .length; count++){ %>
+    <li><%= var1[count] %></li>
+<% } %>
+    
+
+</ul>
+
+<form class="" action ="/" method="post">
+<input type = text name = newlist placeholder="type here ">
+<button type = submit name = Add>Add</button> 
+</form> 
+
 </body>
 </html>

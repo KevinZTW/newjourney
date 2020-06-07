@@ -7,6 +7,7 @@ const currentDay = today.getDay()
 app.set('view engine', 'ejs');
 let Items = ["Buy food", "Cook food"];
 let var1 =""
+let workItems=[];
 
 
 
@@ -19,32 +20,44 @@ var day = today.toLocaleDateString("en-US", options)
 switch(currentDay){
     
     case 0:
-        var dayname = "Sunday";
+        var dayname = "Sunda";
         break;
     case 1:
         var dayname = "Monday";
         break;
     case 2:
-        var dayname = "Tuesday";
+        var dayname = "Tueswesy";
         break;}
 
 
-app.use(bodyParser.urlencoded({extneded:true}))
-
+app.use(bodyParser.urlencoded({extneded:true}));
+app.use(express.static("public"))
 
 
 
 app.get("/", function(req, res){
-   res.render("list", {kindDay :dayname+day, var1:Items});
+   res.render("list", {listTitle :day, Item:Items});
    
 }); 
 
 app.post("/", function(req, res){
-    Item = req.body.newlist
-    Items.push(Item)   
+    let item = req.body.newlist
+    if (req.body.Add==="Work"){
+        workItems.push(item);
+        res.redirect("/work");
+    }else{
+    Items.push(item)   
     res.redirect("/");
+}});
+
+app.get("/work", function(req, res){
+    res.render("list", {listTitle:"Work List", Item: workItems});
 });
-
-
+app.post("/work",function(req,res){
+    
+    let item = req.body.newItem;
+    workItems.push(item);
+    res.redirect("/work")
+})
 
 app.listen(3000);

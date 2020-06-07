@@ -2,7 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-
+const today = new Date()
+const currentDay = today.getDay()
+app.set('view engine', 'ejs');
 
 
 app.use(bodyParser.urlencoded({extneded:true}))
@@ -12,23 +14,23 @@ app.get("/", function(req, res){
 }); 
 
 app.post("/", function(req, res){
-    var today =new Date();
-
-    if(today.getDay()===6 || today.getDay()===0){
-        res.send("woo, todya is holiday")
-    }else{
-        res.send("Work harder bro")
+    console.log(currentDay);
+    switch(currentDay){
+    
+        case 0:
+            var dayname = "Sunday";
+            break;
+        case 1:
+            var dayname = "Monday";
+            break;
+        case 2:
+            var dayname = "Tuesday";
+            break;
+    
     }
-    const Get = documents.getElementById(welcome);
-
-})
-
-
-
-
-
-
-
+   
+    res.render("list", {kindDay :dayname});
+});
 
 
 

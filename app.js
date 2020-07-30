@@ -1,12 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose")
 
 const app = express();
 const today = new Date()
 const currentDay = today.getDay()
 app.set('view engine', 'ejs');
-let Items = ["Buy food", "Cook food"];
-let var1 =""
+
+
+
 let workItems=[];
 
 

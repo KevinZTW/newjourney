@@ -1,6 +1,6 @@
 html {
-  background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #66B3FF 50%, #E4E9FD 50%);
+  background-color:	#272727;
+
   min-height: 1000px;
   font-family: 'helvetica neue';
 }
@@ -19,8 +19,13 @@ h1 {
 }
 
 #heading {
-  background-color: #A683E3;
+  background-color: 	#7B7B7B;
   text-align: center;
+}
+#welcome {
+  background-color: 			#272727;
+  text-align: center;
+
 }
 
 .item {
@@ -61,7 +66,7 @@ button {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #A683E3;
+  background-color: #00CACA;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;

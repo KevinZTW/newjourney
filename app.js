@@ -17,11 +17,9 @@ const Item = mongoose.model("Item", itemSchema);
 const item1 = new Item ({
     name : "finish bootcamp"
 });
-
 const item2 = new Item ({
     name : "Welcome"
 });
-
 const item3 = new Item ({
     name : "hit the plus button to add new item"
 });
@@ -66,22 +64,32 @@ app.use(express.static("public"))
 
 app.get("/", function(req, res){
     Item.find({}, function(err, foundItems){
+        console.log(foundItems)
         res.render("list", {listTitle :day, Item:foundItems})
     })   
 }); 
 
 app.post("/", function(req, res){
+    console.log(req.body)
     let itemName = req.body.newlist;
     const newItem = new Item({
         name : itemName
     });
     Item.insertMany(newItem)
-    
+    res.redirect("/")
 });
 
-
-
-
+app.post("/delete", function(req, res){
+    console.log(req.body.delete);
+    Item.findByIdAndDelete(req.body.delete, function(err){
+        if(err){console.log(err)
+        } else {console.log("successful deletion")
+        };
+     })
+     res.redirect("/")
+});
+  
+    
 
 app.get("/work", function(req, res){
     res.render("list", {listTitle:"Work List", Item: workItems});
@@ -93,4 +101,4 @@ app.post("/work",function(req,res){
     res.redirect("/work")
 })
 
-app.listen(3000);
+app.listen(8080);

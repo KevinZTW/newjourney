@@ -17,17 +17,18 @@
 
     <div class="box">
      <% for (var count =0; count<Item .length; count++){ %>
-        <form>
+        <form action ="/delete" method="post">
             <div class="item">
-            
-                <input type ="checkbox">
-                <p><%= Item[count].name %></p> 
+                <input type ="checkbox" >
+                <p><%= Item[count].name %></p>
+                <button type = submit name = delete value="<%= Item[count].id %>" >x</button>
             </div>
          </form>   
     <% } %>      
-        <form class="item"" action ="/" method="post">
+
+        <form class="item" action ="/"  method="post">
             <input type = text name = newlist placeholder="type here " autocomplete ="off">
-            <button type = submit name = Add value =<%= listTitle %>> + </button> 
+            <button type = submit name = Add > + </button> 
             </form> 
     </div>
 

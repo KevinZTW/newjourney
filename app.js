@@ -101,4 +101,8 @@ app.post("/work",function(req,res){
     res.redirect("/work")
 })
 
-app.listen(8080);
+let port = process.env.PORT;    
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
